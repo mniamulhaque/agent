@@ -35,28 +35,16 @@
           <!-- Start Page Content -->
           <!-- ============================================================== -->
           <p class="">
-               @if($errors->has('agentId'))
+               @if($errors->has('file_status'))
                     <div class="alert text-danger" style="background:#F8D7DA" role="alert">
-                      {{$errors->first('agentId')}}
-                    </div>
-                @elseif($errors->has('name'))
-                    <div class="alert text-danger" style="background:#F8D7DA" role="alert">
-                      {{$errors->first('name')}}
-                    </div>
-                @elseif($errors->has('area_name'))
-                    <div class="alert text-danger" style="background:#F8D7DA" role="alert">
-                      {{$errors->first('area_name')}}
-                    </div>
-                @elseif($errors->has('mobile'))
-                    <div class="alert text-danger" style="background:#F8D7DA" role="alert">
-                      {{$errors->first('mobile')}}
+                      {{$errors->first('file_status')}}
                     </div>
                 @endif
              </p>
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <form class="form-horizontal" action="{{url('/agent-list') }}" method="POST">
+                <form class="form-horizontal" action="{{url('/statusUpdateSend/'.$filId) }}" method="POST">
                   @csrf
                   <div class="card-body">
                     <h4 class="card-title">Update Your Current Status </h4>
@@ -71,14 +59,13 @@
                         <select
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
-                            name="ptype"
+                            name="file_status"
                           >
                             <option>Select Status</option>
                               <option value="sb-police">SB-Police</option>
                               <option value="print">Print</option>
                               <option value="completed">Completed</option>
                         </select>
-                        <input type="hidden" name="filId" value="{{$filId}}">
                       </div>
                     </div>
                   </div>

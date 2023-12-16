@@ -17,7 +17,7 @@ class fileCon extends Controller
     public function index()
     {
         $fileData = filemanage::all();
-        return view('backend.pages.fileList',compact('fileData'));    
+        return view('backend.uddoktas.upages.fileList',compact('fileData'));    
     }
 
     /**
@@ -42,7 +42,7 @@ class fileCon extends Controller
         }else{
             $apId = $stidd;
         }
-        return view('backend.pages.fileAdd',compact('apId'));
+        return view('backend.uddoktas.upages.fileAdd',compact('apId'));
     }
 
     /**
@@ -58,6 +58,7 @@ class fileCon extends Controller
 
          $validator = validator::make($request->all(),[
             'apid'=>'required|unique:filemanages',
+            'fileType'=>'required',
             'name'=>'required',
             'fname'=>'required',
             'dob'=>'required',
@@ -77,6 +78,7 @@ class fileCon extends Controller
         }
 
         $filemanageData->apid = $request->apid;
+        $filemanageData->fileType = $request->fileType;
         $filemanageData->name = $request->name;
         $filemanageData->fname = $request->fname;
         $filemanageData->area_name = 0;
@@ -89,12 +91,13 @@ class fileCon extends Controller
         $filemanageData->pyear = $request->pyear;
         $filemanageData->total_price = 0;
         $filemanageData->file_documet = 0;
+        $filemanageData->file_recipt = 0;
         $filemanageData->agentBy = 0;
         $filemanageData->pay_1st = 0;
         $filemanageData->pay_2nd = 0;
         $filemanageData->pay_3rd = 0;
         $filemanageData->suspend_aproved = 0;
-        $filemanageData->pending_aproved = 0;
+        $filemanageData->file_status = 1;
         $filemanageData->done_aproved = 0;
         $filemanageData->user_id = 0;
         $filemanageData->user_mobile = 0;
@@ -115,7 +118,8 @@ class fileCon extends Controller
      */
     public function show($id)
     {
-        //
+        $fileData = filemanage::find($id);
+        return view('backend.uddoktas.upages.userfileView',compact('fileData'));
     }
 
     /**
@@ -126,7 +130,8 @@ class fileCon extends Controller
      */
     public function edit($id)
     {
-        //
+        $apId = filemanage::find($id);
+        return view('backend.uddoktas.upages.userfileEdit',compact('apId'));
     }
 
     /**
@@ -136,9 +141,47 @@ class fileCon extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
-        //
+
+         $validator = validator::make($req->all(),[
+            'fileType'=>'required',
+            'name'=>'required',
+            'fname'=>'required',
+            'dob'=>'required',
+            'vill'=>'required',
+            'ptype'=>'required',
+            'pyear'=>'required',
+            'alterNative'=>'required',
+            'agreementType'=>'required',
+            'mobile'=>'required',
+        ]);
+
+         
+
+        if($validator->fails()){
+            return redirect('/file-list/create')->withErrors($validator)->withInput();
+        }
+
+
+        filemanage::find($id)->update([
+            'fileType'=>$req->fileType,
+            'name'=>$req->name,
+            'fname'=>$req->fname,
+            'vill'=>$req->vill,
+            'dob'=>$req->dob,
+            'mobile'=>$req->mobile,
+            'alterNative'=>$req->alterNative,
+            'agreementType'=>$req->agreementType,
+            'ptype'=>$req->ptype,
+            'pyear'=>$req->pyear,
+        ]);
+
+
+       
+        Session::flash('message','file Update Successfully');
+        
+        return redirect('/file-list'); 
     }
 
     /**

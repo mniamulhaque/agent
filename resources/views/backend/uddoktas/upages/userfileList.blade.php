@@ -1,4 +1,4 @@
-@extends('backend.layout.master')
+@extends('backend.uddoktas.layout.master')
   @section('body')
       <!-- ============================================================== -->
       <!-- Page wrapper  -->
@@ -73,13 +73,7 @@
                           <td>{{$frow->mobile}}</td>
                           <td>{{$frow->total_price}}</td>
                           <td>{{$frow->total_price-($frow->pay_1st+$frow->pay_2nd+$frow->pay_3rd)}}</td>
-                          <td class="text-warning">
-                            @if($frow->file_status == 1)
-                            New
-                            @else
-                            {{$frow->file_status}}
-                            @endif
-                          </td>
+                          <td class="text-warning">{{$frow->file_status}}</td>
                           <td>
                             <div class="btn-group">
                               <button
@@ -92,12 +86,9 @@
                                 Action
                               </button>
                               <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{url('/fileView/'.$frow->id)}}">View</a>
-                                <a class="dropdown-item" href="{{url('/statusUpdate/'.$frow->id)}}">Status Update</a>
+                                <a class="dropdown-item" href="{{url('file-list/'.$frow->id)}}">View</a>
                                 @if($menuGurd == "newlist")
                                 <a class="dropdown-item" href="{{url('/filepayment/'.$frow->id)}}">Payment</a>
-                                <a class="dropdown-item" href="{{url('/fileAgent/'.$frow->id)}}">Transfer to Agent</a>
-                                
                                 <a class="dropdown-item" href="{{url('/fileDelete/'.$frow->id)}}">Delete</a>
                                 @endif
                               </div>

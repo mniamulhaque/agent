@@ -1,4 +1,4 @@
-@extends('backend.layout.master')
+@extends('backend.uddoktas.layout.master')
   @section('body')
       <!-- ============================================================== -->
       <!-- Page wrapper  -->
@@ -35,60 +35,44 @@
           <!-- Start Page Content -->
           <!-- ============================================================== -->
           <p class="">
-               @if($errors->has('agentId'))
+               @if($errors->has('file_status'))
                     <div class="alert text-danger" style="background:#F8D7DA" role="alert">
-                      {{$errors->first('agentId')}}
+                      {{$errors->first('file_status')}}
                     </div>
                 @endif
              </p>
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <form class="form-horizontal" action="{{url('/fileAgentSend/'.$filId) }}" method="POST">
+                <form class="form-horizontal" action="{{url('/userstatusUpdateSend/'.$filId) }}" method="POST">
                   @csrf
                   <div class="card-body">
-                    <h4 class="card-title">Transfer to agent </h4>
+                    <h4 class="card-title">Update Your Current Status </h4>
                     
                     <div class="form-group row">
                       <label
                         for="fname"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >Agent Name </label
+                        >Status Catagory </label
                       >
                       <div class="col-sm-9">
                         <select
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
-                            name="agentId"
+                            name="file_status"
                           >
-                            <option>Select Agent</option>
-                            @foreach($agentData as $arow)
-                              <option value="{{$arow->id}}">{{$arow->name}}</option>
-                            @endforeach
+                            <option>Select Status</option>
+                              <option value="sb-police">SB-Police</option>
+                              <option value="print">Print</option>
+                              <option value="completed">Completed</option>
                         </select>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label
-                        for="fname"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Time to finish work</label
-                      >
-                      <div class="col-sm-9">
-                        <input
-                          type="date"
-                          class="form-control"
-                          id="name"
-                          name="finishTime"
-                        />
-                      </div>
-                    </div>
-                    
                   </div>
                   <div class="border-top">
                     <div class="card-body">
                       <button type="submit" class="btn btn-primary">
-                        Submit
+                        Change
                       </button>
                     </div>
                   </div>

@@ -1,5 +1,5 @@
-@extends('backend.layout.master')
-  @section('body')
+@extends('backend.uddoktas.layout.master')
+@section('body')
       <!-- ============================================================== -->
       <!-- Page wrapper  -->
       <!-- ============================================================== -->
@@ -94,6 +94,7 @@
               <div class="card">
                 <form class="form-horizontal" action="{{url('/file-list/'.$apId->id) }}" method="POST">
                   @csrf
+                  @method('PUT')
                   <div class="card-body">
                     <h4 class="card-title">Edite File Information</h4>
                     <div class="form-group row">
@@ -123,10 +124,9 @@
                         <select
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
-                            value="{{$apId->fileType}}"
                             name="fileType"
                           >
-                            <option>Select Type</option>
+                            <option value="{{$apId->fileType}}">{{$apId->fileType}}</option>
                             <option value="new">New</option>
                             <option value="renew">Re-New</option>
                         </select>
@@ -212,9 +212,8 @@
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
                             name="ptype"
-                          value="{{$apId->ptype}}"
                           >
-                            <option>Select Type</option>
+                            <option value="{{$apId->ptype}}">{{$apId->ptype}}</option>
                             <option value="regular">Regular</option>
                             <option value="express">Express</option>
                             <option value="superexpress">Super Express</option>
@@ -232,9 +231,8 @@
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
                             name="pyear"
-                          value="{{$apId->pyear}}"
                           >
-                            <option>Select Year</option>
+                            <option value="{{$apId->pyear}}">{{$apId->pyear}}</option>
                             <option value="10">10 Year</option>
                             <option value="5">5 Year</option>
                         </select>
@@ -290,7 +288,7 @@
                             name="agreementType"
                           value="{{$apId->agreementType}}"
                           >
-                            <option>Select Type</option>
+                            <option value="{{$apId->agreementType}}">{{$apId->agreementType}}</option>
                             <option value="all">All</option>
                             <option value="passport">Passport</option>
                             <option value="policeverify">Police Verify</option>

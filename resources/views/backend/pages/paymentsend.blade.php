@@ -56,7 +56,7 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <form class="form-horizontal" action="{{url('/agent-list') }}" method="POST">
+                <form class="form-horizontal" action="{{url('/filepaymentInsert') }}" method="POST">
                   @csrf
                   <div class="card-body">
                     <div class="form-group row">
@@ -66,6 +66,7 @@
                         >Total Channel Fee</label
                       >
                       <div class="col-sm-9">
+                        <input type="hidden" value="{{$filIdd}}" name="filIdd">
                         <input
                           type="number"
                           class="form-control"

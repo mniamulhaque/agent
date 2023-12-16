@@ -1,4 +1,4 @@
-@extends('backend.layout.master')
+@extends('backend.uddoktas.layout.master')
   @section('body')
       <!-- ============================================================== -->
       <!-- Page wrapper  -->
@@ -92,10 +92,10 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <form class="form-horizontal" action="{{url('/file-list/'.$apId->id) }}" method="POST">
+                <form class="form-horizontal" action="{{url('/file-list') }}" method="POST">
                   @csrf
                   <div class="card-body">
-                    <h4 class="card-title">Edite File Information</h4>
+                    <h4 class="card-title">Add File Information</h4>
                     <div class="form-group row">
                       <label
                         for="fname"
@@ -108,7 +108,7 @@
                           class="form-control"
                           id="apid"
                           name="apid"
-                          value="000{{$apId->id}}"
+                          value="{{$apId}}"
                           readonly
                         />
                       </div>
@@ -123,7 +123,6 @@
                         <select
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
-                            value="{{$apId->fileType}}"
                             name="fileType"
                           >
                             <option>Select Type</option>
@@ -144,7 +143,6 @@
                           class="form-control"
                           id="name"
                           name="name"
-                          value="{{$apId->name}}"
                           placeholder="Full Name Here"
                         />
                       </div>
@@ -162,7 +160,6 @@
                           class="form-control"
                           id="fname"
                           name="fname"
-                          value="{{$apId->fname}}"
                           placeholder="Father's Name Here"
                         />
                       </div>
@@ -180,7 +177,6 @@
                           class="form-control"
                           id="dob"
                           name="dob"
-                          value="{{$apId->dob}}"
                         />
                       </div>
                     </div>
@@ -196,7 +192,6 @@
                           class="form-control"
                           id="vill"
                           name="vill"
-                          value="{{$apId->vill}}"
                           placeholder="Village Name Here"
                         />
                       </div>
@@ -212,7 +207,6 @@
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
                             name="ptype"
-                          value="{{$apId->ptype}}"
                           >
                             <option>Select Type</option>
                             <option value="regular">Regular</option>
@@ -232,7 +226,6 @@
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
                             name="pyear"
-                          value="{{$apId->pyear}}"
                           >
                             <option>Select Year</option>
                             <option value="10">10 Year</option>
@@ -252,7 +245,6 @@
                           class="form-control"
                           id="number"
                           name="mobile"
-                          value="{{$apId->mobile}}"
                           placeholder="Mobile Number Here"
                         />
                       </div>
@@ -271,7 +263,6 @@
                           class="form-control"
                           id="number"
                           name="alterNative"
-                          value="{{$apId->alterNative}}"
                           placeholder="Mobile Number Here"
                         />
                       </div>
@@ -288,13 +279,28 @@
                             class="select2 form-select shadow-none"
                             style="width: 100%; height: 36px"
                             name="agreementType"
-                          value="{{$apId->agreementType}}"
                           >
                             <option>Select Type</option>
                             <option value="all">All</option>
                             <option value="passport">Passport</option>
                             <option value="policeverify">Police Verify</option>
                         </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label
+                        for="lname"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >Upload Document(pdf)</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="file"
+                          class="form-control"
+                          id="file_documet"
+                          name="file_documet"
+                        />
                       </div>
                     </div>
                   </div>

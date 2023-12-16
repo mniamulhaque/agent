@@ -65,7 +65,7 @@
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="{{url('/home')}}">
+            <a class="navbar-brand" href="{{url('/uhome')}}">
               <!-- Logo icon -->
               <b class="logo-icon ps-2">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -142,14 +142,112 @@
               <!-- ============================================================== -->
               <!-- Comment -->
               <!-- ============================================================== -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="mdi mdi-bell font-24"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Coming Soon..</a></li>
+                </ul>
+              </li>
               <!-- ============================================================== -->
               <!-- End Comment -->
               <!-- ============================================================== -->
               <!-- ============================================================== -->
               <!-- Messages -->
-              <!-- ============================================================== -->
-             
-              <!-- ============================================================== -->
+              <!-- ============================================================== 
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle waves-effect waves-dark"
+                  href="#"
+                  id="2"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="font-24 mdi mdi-comment-processing"></i>
+                </a>
+                <ul
+                  class="
+                    dropdown-menu dropdown-menu-end
+                    mailbox
+                    animated
+                    bounceInDown
+                  "
+                  aria-labelledby="2"
+                >
+                  <ul class="list-style-none">
+                    <li>
+                      <div class="">
+                        <a href="javascript:void(0)" class="link border-top">
+                          <div class="d-flex no-block align-items-center p-10">
+                            <span
+                              class="
+                                btn btn-success btn-circle
+                                d-flex
+                                align-items-center
+                                justify-content-center
+                              "
+                              ><i class="mdi mdi-calendar text-white fs-4"></i
+                            ></span>
+                            <div class="ms-2">
+                              <h5 class="mb-0">Event today</h5>
+                              <span class="mail-desc"
+                                >Just a reminder that event</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="link border-top">
+                          <div class="d-flex no-block align-items-center p-10">
+                            <span
+                              class="
+                                btn btn-info btn-circle
+                                d-flex
+                                align-items-center
+                                justify-content-center
+                              "
+                              ><i class="mdi mdi-settings fs-4"></i
+                            ></span>
+                            <div class="ms-2">
+                              <h5 class="mb-0">Settings</h5>
+                              <span class="mail-desc"
+                                >You can customize this template</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="link border-top">
+                          <div class="d-flex no-block align-items-center p-10">
+                            <span
+                              class="
+                                btn btn-primary btn-circle
+                                d-flex
+                                align-items-center
+                                justify-content-center
+                              "
+                              ><i class="mdi mdi-account fs-4"></i
+                            ></span>
+                            <div class="ms-2">
+                              <h5 class="mb-0">Pavan kumar</h5>
+                              <span class="mail-desc"
+                                >Just see the my admin!</span
+                              >
+                            </div>
+                          </div>
+                      </div>
+                    </li>
+                  </ul>
+                </ul>
+              </li>
+               ============================================================== -->
               <!-- End Messages -->
               <!-- ============================================================== -->
 
@@ -241,29 +339,6 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-receipt"></i
-                  ><span class="hide-menu">Uddokta Info </span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  <li class="sidebar-item">
-                    <a href="{{url('uddokta-list/create')}}" class="sidebar-link"
-                      ><i class="mdi mdi-note-outline"></i
-                      ><span class="hide-menu"> Add Uddokta </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="{{url('uddokta-list')}}" class="sidebar-link"
-                      ><i class="mdi mdi-note-plus"></i
-                      ><span class="hide-menu"> Uddokta List </span></a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
                   href="javascript:void(0"
                   aria-expanded="false"
                   ><i class="mdi mdi-face"></i
@@ -271,14 +346,20 @@
                 >
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="{{url('admin/filelist')}}" class="sidebar-link"
+                    <a href="{{url('file-list/create')}}" class="sidebar-link"
                       ><i class="mdi mdi-emoticon"></i
-                      ><span class="hide-menu"> File List </span></a
+                      ><span class="hide-menu"> Add File By Uddokta </span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="{{url('file-list')}}" class="sidebar-link"
+                      ><i class="mdi mdi-emoticon"></i
+                      ><span class="hide-menu"> File List By Uddokta </span></a
                     >
                   </li>
 
                   <li class="sidebar-item">
-                    <a href="{{url('admin/filenewlist')}}" class="sidebar-link"
+                    <a href="{{url('user/filenewlist')}}" class="sidebar-link"
                       ><i class="mdi mdi-emoticon"></i
                       ><span class="hide-menu"> New List </span><span class="badge rounded-pill bg-danger float-end ms-2"
                               > {{count(App\filemanage::where('pay_1st',0)->where('agentBy',0)->get())}}</span
@@ -286,44 +367,15 @@
                     >
                   </li>
                   <li class="sidebar-item">
-                    <a href="{{url('admin/pendinglist')}}" class="sidebar-link"
+                    <a href="{{url('user/pendinglist')}}" class="sidebar-link"
                       ><i class="mdi mdi-emoticon-cool"></i
                       ><span class="hide-menu"> pending List </span></a
                     >
                   </li>
                   <li class="sidebar-item">
-                    <a href="{{url('admin/completedlist')}}" class="sidebar-link"
+                    <a href="{{url('user/completedlist')}}" class="sidebar-link"
                       ><i class="mdi mdi-emoticon-cool"></i
                       ><span class="hide-menu"> Completed List </span></a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-move-resize-variant"></i
-                  ><span class="hide-menu">Agent Info </span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  <li class="sidebar-item">
-                    <a href="{{url('agent-list/create')}}" class="sidebar-link"
-                      ><i class="mdi mdi-view-dashboard"></i
-                      ><span class="hide-menu"> Add Agent </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="{{url('agent-list')}}" class="sidebar-link"
-                      ><i class="mdi mdi-multiplication-box"></i
-                      ><span class="hide-menu"> Agent List </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="{{url('admin/agent_list_search')}}" class="sidebar-link"
-                      ><i class="mdi mdi-calendar-check"></i
-                      ><span class="hide-menu"> Search File By Agent </span></a
                     >
                   </li>
                 </ul>

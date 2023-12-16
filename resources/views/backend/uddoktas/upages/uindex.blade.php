@@ -1,4 +1,4 @@
-@extends('backend.layout.master')
+@extends('backend.uddoktas.layout.master')
   @section('body')
       <!-- ============================================================== -->
       <!-- Page wrapper  -->
@@ -36,65 +36,7 @@
           <!-- ============================================================== -->
           <div class="row">
             <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
-              <div class="card card-hover">
-                <div class="box bg-cyan text-center">
-                  <h1 class="font-light text-white">
-                    <i class="mdi mdi-account"></i>
-                  </h1>
-                  <h3 class="text-white">5000</h3>
-                  <h6 class="text-white">Total Uddokta</h6>
-                </div>
-              </div>
-            </div>
-            <!-- Column -->
-            <div class="col-md-6 col-lg-4 col-xlg-3">
-              <div class="card card-hover">
-                <div class="box bg-success text-center">
-                  <h1 class="font-light text-white">
-                    <i class="mdi mdi-account-check"></i>
-                  </h1>
-                  <h3 class="text-white">5000</h3>
-                  <h6 class="text-white">Active Uddokta</h6>
-                </div>
-              </div>
-            </div>
-            <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
-              <div class="card card-hover">
-                <div class="box bg-warning text-center">
-                  <h1 class="font-light text-white">
-                    <i class="mdi mdi-lock"></i>
-                  </h1>
-                  <h3 class="text-white">5000</h3>
-                  <h6 class="text-white">Deactive Uddokta</h6>
-                </div>
-              </div>
-            </div>
-            <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
-              <div class="card card-hover">
-                <div class="box bg-danger text-center">
-                  <h1 class="font-light text-white">
-                    <i class="mdi mdi-file"></i>
-                  </h1>
-                  <h3 class="text-white">5000</h3>
-                  <h6 class="text-white">Total File Completed</h6>
-                </div>
-              </div>
-            </div>
-            <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
-              <div class="card card-hover">
-                <div class="box bg-info text-center">
-                  <h1 class="font-light text-white">
-                    <i class="mdi mdi-sync"></i>
-                  </h1>
-                  <h3 class="text-white">5000</h3>
-                  <h6 class="text-white">Total File Pending</h6>
-                </div>
-              </div>
-            </div>
+            
             <!-- Column -->
             <!-- Column -->
             <div class="col-md-6 col-lg-4 col-xlg-3">
@@ -135,24 +77,24 @@
             <!-- Column -->
             <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
-                <div class="box bg-success text-center">
+                <div class="box bg-danger text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-account-switch"></i>
+                    <i class="mdi mdi-file"></i>
                   </h1>
                   <h3 class="text-white">5000</h3>
-                  <h6 class="text-white">Total Agent</h6>
+                  <h6 class="text-white">Total File Completed</h6>
                 </div>
               </div>
             </div>
             <!-- Column -->
             <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
-                <div class="box bg-warning text-center">
+                <div class="box bg-info text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-alert"></i>
+                    <i class="mdi mdi-sync"></i>
                   </h1>
                   <h3 class="text-white">5000</h3>
-                  <h6 class="text-white">Agent Due</h6>
+                  <h6 class="text-white">Total File Pending</h6>
                 </div>
               </div>
             </div>

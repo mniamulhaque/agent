@@ -8,41 +8,28 @@ use App\agents;
 use Validator;
 use Session;
 
-class fileOptionalCon extends Controller
+class userFileOptinonCon extends Controller
 {
-    public function fileList()
-    {
-        $menuGurd = "alllist";
-        $fileData = filemanage::all();
-        return view('backend.pages.adminfileList',compact('fileData','menuGurd'));
-    }
-
-
+   
     public function fileNewList()
     {
         $menuGurd = "newlist";
         $fileData = filemanage::where('pay_1st',0)->where('agentBy',0)->get();
-        return view('backend.pages.adminfileList',compact('fileData','menuGurd'));
+        return view('backend.uddoktas.upages.userfileList',compact('fileData','menuGurd'));
     }
 
     public function pendingList()
     {
         $menuGurd = "pendinglist";
         $fileData = filemanage::where('agentBy','!=',0)->where('file_status','!=','completed')->get();
-        return view('backend.pages.adminfileList',compact('fileData','menuGurd'));
+        return view('backend.uddoktas.upages.userfileList',compact('fileData','menuGurd'));
     }
 
     public function completedList()
     {
         $menuGurd = "completedlist";
         $fileData = filemanage::where('pay_1st','>',0)->where('file_status','completed')->get();
-        return view('backend.pages.adminfileList',compact('fileData','menuGurd'));
-    }
-
-    public function fileView($id)
-    {
-        $fileData = filemanage::find($id);
-        return view('backend.pages.fileView',compact('fileData'));
+        return view('backend.uddoktas.upages.userfileList',compact('fileData','menuGurd'));
     }
 
     public function filepayment($id)
@@ -70,42 +57,13 @@ class fileOptionalCon extends Controller
 
         Session::flash('message','Payment Add Successfully');
         
-        return redirect('/admin/filelist'); 
-    }
-
-    public function fileAgent($id)
-    {
-        $filId = $id;
-        $agentData = agents::all();
-        return view('backend.pages.agentTransfer',compact('agentData','filId'));
-    }
-
-    public function fileAgentSend(Request $req,$id)
-    {
-        $validator = validator::make($req->all(),[
-            'agentId'=>'required',
-        ]);
-
-         
-
-        if($validator->fails()){
-            return redirect('/fileAgent/'.$id)->withErrors($validator)->withInput();
-        }
-
-
-        filemanage::where('id',$id)->update([
-            'agentBy'=>$req->agentId,
-        ]);
-
-        Session::flash('message','File Transfer To Agent Successfully');
-        
-        return redirect('/admin/filelist'); 
+        return redirect('/file-list'); 
     }
 
      public function statusUpdate($id)
     {
         $filId = $id;
-        return view('backend.pages.statusUpdate',compact('filId'));
+        return view('backend.uddoktas.upages.userstatusUpdate',compact('filId'));
     }
 
     public function statusUpdateSend(Request $req,$id)
@@ -117,7 +75,7 @@ class fileOptionalCon extends Controller
          
 
         if($validator->fails()){
-            return redirect('/statusUpdate/'.$id)->withErrors($validator)->withInput();
+            return redirect('/userstatusUpdate/'.$id)->withErrors($validator)->withInput();
         }
 
 
@@ -127,7 +85,35 @@ class fileOptionalCon extends Controller
 
         Session::flash('message','File Status Update Successfully');
         
-        return redirect('/admin/filelist'); 
+        return redirect('/file-list'); 
+    }
+
+     public function fileRecipt($id)
+    {
+        $filId = $id;
+        return view('backend.uddoktas.upages.addMoneyRe',compact('filId'));
+    }
+
+    public function fileReciptUpdate(Request $req,$id)
+    {
+        $validator = validator::make($req->all(),[
+            'file_recipt'=>'required',
+        ]);
+
+         
+
+        if($validator->fails()){
+            return redirect('/userfileRecipt/'.$id)->withErrors($validator)->withInput();
+        }
+
+
+        filemanage::where('id',$id)->update([
+            'file_recipt'=>2,
+        ]);
+
+        Session::flash('message','file_recipt Update Successfully');
+        
+        return redirect('/file-list'); 
     }
 
 }

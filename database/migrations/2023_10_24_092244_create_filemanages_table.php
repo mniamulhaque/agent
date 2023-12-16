@@ -16,6 +16,7 @@ class CreateFilemanagesTable extends Migration
         Schema::create('filemanages', function (Blueprint $table) {
             $table->id();
             $table->integer('apid');
+            $table->string('fileType');
             $table->string('name');
             $table->string('fname');
             $table->string('dob');
@@ -32,8 +33,9 @@ class CreateFilemanagesTable extends Migration
             $table->integer('pay_2nd');
             $table->integer('pay_3rd');
             $table->string('file_documet');
+            $table->string('file_recipt');
             $table->integer('suspend_aproved');
-            $table->integer('pending_aproved');
+            $table->string('file_status');
             $table->integer('done_aproved');
             $table->integer('user_id');
             $table->integer('user_mobile');

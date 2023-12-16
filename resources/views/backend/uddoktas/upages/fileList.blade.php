@@ -1,4 +1,4 @@
-@extends('backend.layout.master')
+@extends('backend.uddoktas.layout.master')
   @section('body')
       <!-- ============================================================== -->
       <!-- Page wrapper  -->
@@ -38,17 +38,16 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Basic Datatable</h5>
+                  <h5 class="card-title">File Datatable</h5>
                   <div class="table-responsive">
                     <table
                       id="zero_config"
-                      class="table table-striped table-bordered"
+                      class="table table-striped table-bordered h-100"
                     >
                       <thead>
                          <tr>
                           <th>Si No</th>
                           <th>Name </th>
-                          <th>Father's Name </th>
                           <th>Agreement Type</th>
                           <th>Passport Type</th>
                           <th>Aria Name</th>
@@ -65,7 +64,6 @@
                         <tr>
                           <td>{{++$key}}</td>
                           <td>{{$frow->name}}</td>
-                          <td>{{$frow->fname}}</td>
                           <td>{{$frow->agreementType}}</td>
                           <td>{{$frow->ptype}}</td>
                           <td>{{$frow->area_name}}</td>
@@ -92,12 +90,11 @@
                                 Action
                               </button>
                               <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{url('/fileView/'.$frow->id)}}">View</a>
-                                <a class="dropdown-item" href="{{url('/statusUpdate/'.$frow->id)}}">Status Update</a>
-                                @if($menuGurd == "newlist")
-                                <a class="dropdown-item" href="{{url('/filepayment/'.$frow->id)}}">Payment</a>
-                                <a class="dropdown-item" href="{{url('/fileAgent/'.$frow->id)}}">Transfer to Agent</a>
-                                
+                                <a class="dropdown-item" href="{{url('/file-list/'.$frow->id)}}">View</a>
+                                <a class="dropdown-item" href="{{url('/file-list/'.$frow->id.'/edit')}}">Edite</a>
+                                <a class="dropdown-item" href="{{url('/userfileRecipt/'.$frow->id)}}">Add Recipt</a>
+                                <a class="dropdown-item" href="{{url('/userstatusUpdate/'.$frow->id)}}">Status Update</a>
+                                @if($frow->file_status == 1)
                                 <a class="dropdown-item" href="{{url('/fileDelete/'.$frow->id)}}">Delete</a>
                                 @endif
                               </div>
